@@ -1,0 +1,56 @@
+.content
+{
+  width:60%;
+  background: red;
+  float:left;
+  padding-left: 30px;
+  height: 100%;
+}
+.sidebar
+{
+  width:40%;
+  background: green;
+  float:right;
+  padding: 10px;
+}
+h1
+{
+  text-align: center;;
+  border-bottom: 2px solid yellow;
+  padding-bottom: 10px;
+}
+#date
+{
+  color:yellow;
+  font-size: 15px;
+  font-style: italic;
+}
+body
+{
+  color: white;
+  background: red;
+}
+a
+{
+  color:#f0e522;
+}
+#ch
+{
+  color:yellow;
+  font-size: 20px;
+  font-style: italic;
+  border-bottom: 2px solid yellow;
+}
+
+#fh
+{
+  color:Yellow;
+  font-size: 20px;
+
+}
+#pcount
+{
+  font-size: 40px;
+  color:yellow;
+  font-weight: bold;
+}

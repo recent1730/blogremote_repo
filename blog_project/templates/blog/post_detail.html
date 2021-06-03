@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+{%extends 'blog/base.html'%}
+<!-- {% load bootstrap4 %} -->
+{%block title_block%}{{post.title}}{% endblock %}
+{%block content%}
+ <h1>{{post.title}}</h1>
+
+    <h2>{{post.title}}</h2>
+    <p id="date">Published on {{post.publish}} by {{post.author|title}}</p>
+    {{post.body}}<br><br>
+
+    <div class="container" align="center">
+        <a href="/{{post.id}}/share" class="btn btn-success ">Send Post By Mail</a>
+    </div>
+
+    {% with comments.count as comments_count%}
+       <h2>{{comments_count}} Comment{{comments_count|pluralize}}</h2>
+    {%endwith%}
+
+    {%if comments %}
+      {%for comment in comments %}
+       <p id="ch">Comment {{forloop.counter}} by {{comment.name}} on {{comment.created}}</p>
+       <div class="cb">
+          {{comment.body|linebreaks}}
+       </div>
+       {%endfor%}
+      {%else%}
+         <h4>There are no comment's Yet..!!!</h4>
+    {%endif%}
+    <hr>
+    <br>
+    {% if csubmit %}
+       <h4>Your Comment Added Succesfilly....!</h4>
+       {% else %}
+       <h2 id='fh'>You can comment here It is valuble for us..!</h2>
+        <form  method="post">
+            {{form.as_p}}
+            <!-- {% bootstrap_form form %} -->
+            {% csrf_token %}<br>
+            <input type="submit" class="btn btn-success" name="" value=" Submit Comment">
+        </form>
+      {% endif %}
+
+
+{% endblock %}

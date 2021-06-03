@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{%extends 'blog/base.html'%}
+{%block title_block%} Ro-Recent BLOG HOME PAGE{% endblock %}
+{%block content%}
+ <h1>Ro-Recent Blog's</h1>
+ {% if tag %}
+    <h2>Post With Tag '{{tag.name}}' '</h2>
+  {%endif%} <br>
+ {%for post in post_list %}
+    <a href="{{post.get_absolute_url}}"><h2>{{post.title}}</h2></a>
+    <p id="date">Published on {{post.publish}} by {{post.author|title}}</p>
+     <p>
+       Tags :
+       {%for tag in post.tags.all %}
+        <a href="{%url 'post_list_by_tag' tag.slug %}" class="btn btn-success">{{tag.name}}</a> &nbsp&nbsp
+       {%endfor%}
+     </p>
+    {{post.body|truncatewords:30|linebreaks}}
+ {% endfor %}
+ {% include 'blog/pagination.html'  with page=post_list %}
+{% endblock %}
